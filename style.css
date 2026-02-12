@@ -117,13 +117,14 @@ input, select{
 
 .type-head{
   display:grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 12px;
+  grid-template-columns: 55% 18% 27%;   /* EXACT same as table columns */
   align-items:end;
   padding-top: 10px;
   border-top: 3px solid var(--rule2);
   margin-top: 12px;
 }
+
+
 .type-name{
   font-weight:800;
   font-size: 22px;
@@ -147,8 +148,21 @@ input, select{
   border-bottom: 1px solid transparent;
 }
 .table td:nth-child(1){ width: 55%; }
-.table td:nth-child(2){ width: 18%; text-align:center; font-family: system-ui, Arial, sans-serif; font-size: 14px; color:#333;}
-.table td:nth-child(3){ width: 27%; text-align:right; font-family: system-ui, Arial, sans-serif; font-size: 14px; color:#333;}
+.type-head div:nth-child(2){
+  text-align:center;
+  font-family: system-ui, Arial, sans-serif;
+  font-size:14px;
+  font-weight:700;
+  color:#555;
+}
+
+.type-head div:nth-child(3){
+  text-align:right;
+  font-family: system-ui, Arial, sans-serif;
+  font-size:14px;
+  font-weight:700;
+  color:#555;
+}
 
 /* swatches area */
 .swatches{
