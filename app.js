@@ -43,9 +43,9 @@ function normalise(row) {
 
   return {
     collection_name: pick(row, "collection_name"),
-    collection_order: Number(pick(row, "collection_order")) || 9999,
+    collection_order: parseInt(pick(row, "collection_order"), 10) || 9999,
     range_name: pick(row, "range_name"),
-    range_order: Number(pick(row, "range_order")) || 9999,
+    range_order: parseInt(pick(row, "range_order"), 10) || 9999,
     collection_colours: pick(row, "collection_colours"),
     hero_image_url: pick(row, "hero_image_url"),
     texture_image_url: pick(row, "texture_image_url"),
@@ -154,7 +154,7 @@ for (const [rangeName, items] of sortedRanges) {
 
   el("meta").textContent = `${filtered.length} lines • ${byRange.size} ranges`;
 
-  for (const [rangeName, items] of byRange.entries()) {
+  for (const [rangeName, items] of sortedRanges) {
     const first = items[0];
 
     const swatchesHtml = first.swatches?.length
