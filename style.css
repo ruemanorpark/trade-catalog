@@ -12,7 +12,7 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--ink);
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Arial", "Times New Roman", serif;
 }
 
 .wrap{ max-width: 1120px; margin: 0 auto; padding: 18px; }
@@ -98,7 +98,7 @@ input, select{
 
 .range-title{
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 26px;
   letter-spacing: .3px;
   margin: 2px 0 4px;
@@ -124,10 +124,21 @@ input, select{
   margin-top: 12px;
 }
 
+/* Make header labels sit exactly above their columns */
+.type-head div:nth-child(2){
+  text-align: center;
+  justify-self: center;
+}
+
+.type-head div:nth-child(3){
+  text-align: right;
+  justify-self: end;   /* THIS is the key */
+}
+
 
 .type-name{
-  font-weight:800;
-  font-size: 22px;
+  font-weight:700;
+  font-size: 16px;
 }
 .type-cols{
   font-family: system-ui, Arial, sans-serif;
@@ -140,29 +151,18 @@ input, select{
   width:100%;
   border-collapse: collapse;
   margin-top: 6px;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 18px;
-}
-.table td{
-  padding: 3px 0;
-  border-bottom: 1px solid transparent;
-}
-.table td:nth-child(1){ width: 55%; }
-.type-head div:nth-child(2){
-  text-align:center;
-  font-family: system-ui, Arial, sans-serif;
-  font-size:14px;
-  font-weight:700;
-  color:#555;
+  table-layout: fixed;     /* IMPORTANT: locks column widths */
 }
 
-.type-head div:nth-child(3){
-  text-align:right;
-  font-family: system-ui, Arial, sans-serif;
-  font-size:14px;
-  font-weight:700;
-  color:#555;
+.table td{
+  padding: 3px 0;
+  vertical-align: top;
 }
+
+/* alignment only, NOT widths (colgroup now controls widths) */
+.table td:nth-child(2){ text-align:center; }
+.table td:nth-child(3){ text-align:right; }
+
 
 /* swatches area */
 .swatches{

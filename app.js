@@ -157,9 +157,14 @@ function render() {
             <div class="type-cols">Price/ Unit</div>
           </div>
           <table class="table">
+            <colgroup>
+              <col style="width:55%">
+              <col style="width:18%">
+              <col style="width:27%">
+            </colgroup>
             <tbody>${rowsHtml}</tbody>
           </table>
-        </div>
+
       `;
     }).join("");
 
