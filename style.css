@@ -1,0 +1,31 @@
+:root { font-family: system-ui, Arial, sans-serif; }
+body { margin: 0; background: #f6f6f6; color: #111; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
+h1 { margin: 8px 0 12px; }
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; }
+input, select, button {
+  padding: 10px 12px; border-radius: 10px; border: 1px solid #ddd; background: white;
+}
+button { cursor: pointer; background: #111; color: #fff; border: 0; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.meta { margin-top: 10px; color: #555; font-size: 14px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.card {
+  background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 1px 10px rgba(0,0,0,.04);
+  display: flex; flex-direction: column;
+}
+.card img { width: 100%; height: 220px; object-fit: cover; background: #fafafa; }
+.card .pad { padding: 12px; display: grid; gap: 8px; }
+.title { font-weight: 650; font-size: 14px; line-height: 1.25; }
+.desc { font-size: 13px; color: #555; line-height: 1.35; max-height: 3.9em; overflow: hidden; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.price { font-weight: 700; }
+.swatch { width: 22px; height: 22px; border-radius: 999px; border: 1px solid #ddd; object-fit: cover; }
+.pager { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 18px 0; }

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Catalog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Catalog</h1>
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Search products…" />
+      <select id="filterType"><option value="">All Types</option></select>
+      <select id="filterVendor"><option value="">All Brands</option></select>
+    </div>
+    <div id="meta" class="meta"></div>
+  </header>
+
+  <main class="wrap">
+    <section id="grid" class="grid"></section>
+    <nav class="pager">
+      <button id="prev">Prev</button>
+      <span id="pageInfo"></span>
+      <button id="next">Next</button>
+    </nav>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
