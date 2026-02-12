@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Catalog</title>
+  <title>Trade Catalogue</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="wrap">
-    <h1>Catalog</h1>
-    <div class="toolbar">
-      <input id="q" type="search" placeholder="Search products…" />
-      <select id="filterType"><option value="">All Types</option></select>
-      <select id="filterVendor"><option value="">All Brands</option></select>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">Trade Catalogue</div>
+      <div class="controls">
+        <input id="q" type="search" placeholder="Search range / type / size / colour…" />
+        <select id="filterCollection"><option value="">All Collections</option></select>
+        <select id="filterRange"><option value="">All Ranges</option></select>
+      </div>
     </div>
-    <div id="meta" class="meta"></div>
-  </header>
 
-  <main class="wrap">
-    <section id="grid" class="grid"></section>
-    <nav class="pager">
-      <button id="prev">Prev</button>
-      <span id="pageInfo"></span>
-      <button id="next">Next</button>
-    </nav>
-  </main>
+    <div id="meta" class="meta"></div>
+
+    <main id="brochure"></main>
+  </div>
 
   <script src="app.js"></script>
 </body>
