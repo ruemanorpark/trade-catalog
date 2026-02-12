@@ -1,4 +1,3 @@
-body { background: lime !important; }
 :root{
   --bg:#f2f2f2;
   --ink:#222;
@@ -77,19 +76,18 @@ input, select{
 .left{
   padding: 16px 16px 0 16px;
 }
-.hero{
-  width:100%;
-  height: 420px;
-  object-fit: cover;
-  background:#eee;
-  border: 1px solid #e6e6e6;
-}
+
+/* Force 1:1 image boxes (prevents overflow) */
+.hero,
 .texture{
-  margin-top: 16px;
-  width:100%;
-  height: 360px;
-  object-fit: cover;
-  background:#eee;
+  width: 100%;
+  aspect-ratio: 1 / 1;      /* <-- square */
+  height: auto;             /* aspect-ratio controls height */
+  object-fit: cover;         /* crop to fill the square */
+  object-position: center;   /* keep crop centered */
+  display: block;
+  overflow: hidden;
+  background: #eee;
   border: 1px solid #e6e6e6;
 }
 
