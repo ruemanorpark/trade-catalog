@@ -36,6 +36,11 @@ function csvToRows(csvText) {
 function pick(row, key) { return (row[key] ?? "").trim(); }
 
 function normalise(row) {
+  const swatchList = pick(row, "swatch_urls")
+  .split("|")
+  .map(s => s.trim())
+  .filter(Boolean);
+
   return {
     collection_name: pick(row, "collection_name"),
     range_name: pick(row, "range_name"),
@@ -47,10 +52,7 @@ function normalise(row) {
     carton_qty: pick(row, "carton_qty"),
     price_unit: pick(row, "price_unit"),
 
-    swatches: [
-      pick(row, "swatch_1_url"), pick(row, "swatch_2_url"), pick(row, "swatch_3_url"),
-      pick(row, "swatch_4_url"), pick(row, "swatch_5_url"), pick(row, "swatch_6_url"),
-    ].filter(Boolean),
+    swatches: swatchList,
 
     thumbs: [
       pick(row, "thumb_1_url"),
@@ -126,6 +128,12 @@ function render() {
   for (const [rangeName, items] of byRange.entries()) {
     const first = items[0];
 
+    const swatchesHtml = first.swatches?.length
+      ? `<div class="swatches-left">
+          ${first.swatches.map(u => `<img src="${u}" alt="Swatch" loading="lazy" referrerpolicy="no-referrer">`).join("")}
+        </div>`
+      : "";
+
     // group by product_type for the right-side blocks
     const byType = groupBy(items, x => x.product_type);
 
@@ -168,11 +176,6 @@ function render() {
       `;
     }).join("");
 
-    // swatches and thumbs (optional)
-    const swatchesHtml = first.swatches?.length
-      ? `<div class="swatches">${first.swatches.map(u => `<img src="${u}" alt="Swatch" loading="lazy" referrerpolicy="no-referrer">`).join("")}</div>`
-      : "";
-
     const thumbsHtml = first.thumbs?.length
       ? `<div class="thumbs">${first.thumbs.map(u => `<img src="${u}" alt="Thumbnail" loading="lazy" referrerpolicy="no-referrer">`).join("")}</div>`
       : "";
@@ -185,6 +188,7 @@ function render() {
       <div class="sheet-body">
         <div class="left">
           ${first.hero_image_url ? `<img class="hero" src="${first.hero_image_url}" alt="Hero" loading="lazy" referrerpolicy="no-referrer">` : ""}
+          ${swatchesHtml}
           ${first.texture_image_url ? `<img class="texture" src="${first.texture_image_url}" alt="Texture" loading="lazy" referrerpolicy="no-referrer">` : ""}
         </div>
 
@@ -193,8 +197,6 @@ function render() {
           <div class="colours"><b>Colours:</b> ${escapeHtml(first.collection_colours || "")}</div>
 
           ${typeBlocksHtml}
-
-          ${swatchesHtml}
           ${thumbsHtml}
         </div>
       </div>

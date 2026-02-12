@@ -91,6 +91,22 @@ input, select{
   border: 1px solid #e6e6e6;
 }
 
+.swatches-left{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 per row */
+  gap: 8px;
+}
+
+.swatches-left img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 150px;
+  object-fit: cover;
+  border: 1px solid #e3e3e3;
+  background: #eee;
+}
+
 /* right info column */
 .right{
   padding: 18px 18px 16px 18px;
@@ -164,21 +180,6 @@ input, select{
 .table td:nth-child(3){ text-align:right; }
 
 
-/* swatches area */
-.swatches{
-  margin-top: 14px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  max-width: 260px;
-}
-.swatches img{
-  width:100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border: 1px solid #e3e3e3;
-  background:#eee;
-}
 
 /* optional bottom-right images like PDF thumbnails */
 .thumbs{
