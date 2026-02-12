@@ -43,7 +43,9 @@ function normalise(row) {
 
   return {
     collection_name: pick(row, "collection_name"),
+    collection_order: Number(pick(row, "collection_order")) || 9999,
     range_name: pick(row, "range_name"),
+    range_order: Number(pick(row, "range_order")) || 9999,
     collection_colours: pick(row, "collection_colours"),
     hero_image_url: pick(row, "hero_image_url"),
     texture_image_url: pick(row, "texture_image_url"),
@@ -122,6 +124,33 @@ function render() {
   container.innerHTML = "";
 
   const byRange = groupBy(filtered, x => x.range_name);
+
+  const sortedRanges = Array.from(byRange.entries()).sort((a, b) => {
+  const A = a[1][0]; // first row for range A
+  const B = b[1][0]; // first row for range B
+
+  // 1) collection order
+  if (A.collection_order !== B.collection_order) {
+    return A.collection_order - B.collection_order;
+  }
+
+  // 2) collection name (tie-breaker, optional)
+  const cn = (A.collection_name || "").localeCompare(B.collection_name || "");
+  if (cn !== 0) return cn;
+
+  // 3) range order
+  if (A.range_order !== B.range_order) {
+    return A.range_order - B.range_order;
+  }
+
+  // 4) range name (final tie-breaker)
+  return (A.range_name || "").localeCompare(B.range_name || "");
+});
+
+for (const [rangeName, items] of sortedRanges) {
+  const first = items[0];
+  // ... your existing render code
+}
 
   el("meta").textContent = `${filtered.length} lines • ${byRange.size} ranges`;
 
